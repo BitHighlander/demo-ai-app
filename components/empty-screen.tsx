@@ -3,20 +3,20 @@ import { ArrowRight } from 'lucide-react'
 
 const exampleMessages = [
   {
-    heading: 'Why is Nvidia growing rapidly?',
-    message: 'Why is Nvidia growing rapidly?'
+    heading: 'What is Thorchain?',
+    message: 'What is Thorchain?'
   },
   {
-    heading: 'Is the Apple Vision Pro worth buying?',
-    message: 'Is the Apple Vision Pro worth buying?'
+    heading: 'how do I use my keepkey?',
+    message: 'how do I use my keepkey?'
   },
   {
-    heading: 'How does the Vercel AI SDK work?',
-    message: 'How does the Vercel AI SDK work?'
+    heading: 'How do I swap Assets?',
+    message: 'How do I swap Assets?'
   },
   {
-    heading: 'Tesla vs Rivian',
-    message: 'Tesla vs Rivian'
+    heading: 'ShapeShift vs Thorswap',
+    message: 'ShapeShift vs Thorswap'
   }
 ]
 export function EmptyScreen({
