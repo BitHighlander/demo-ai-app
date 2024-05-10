@@ -14,7 +14,7 @@ import { writer } from '@/lib/agents/writer'
 
 async function submit(formData?: FormData, skip?: boolean) {
   'use server'
-
+  console.log("ActionL: Checkpoint: ")
   const aiState = getMutableAIState<typeof AI>()
   const uiStream = createStreamableUI()
   const isGenerating = createStreamableValue(true)
@@ -34,12 +34,16 @@ async function submit(formData?: FormData, skip?: boolean) {
     : formData
     ? JSON.stringify(Object.fromEntries(formData))
     : null
+
   // Add the user message to the state
   if (content) {
+    console.log("actions: content: ", content)
     const message = { role: 'user', content }
     messages.push(message as ExperimentalMessage)
+    console.log("actions: messages: ", messages)
     aiState.update([...(aiState.get() as any), message])
   }
+
 
   async function processEvents() {
     let action: any = { object: { next: 'proceed' } }
@@ -47,8 +51,10 @@ async function submit(formData?: FormData, skip?: boolean) {
     if (!skip) action = (await taskManager(messages)) ?? action
 
     if (action.object.next === 'inquire') {
+      console.log("action: handle : inquire")
       // Generate inquiry
       const inquiry = await inquire(uiStream, messages)
+      console.log("action: inquiry: ", inquiry)
 
       uiStream.done()
       isGenerating.done()

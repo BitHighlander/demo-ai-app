@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import { ThemeProvider } from '@/components/theme-provider'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
+import { PioneerProvider } from "./pioneer";
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -54,7 +55,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <AI>{children}</AI>
+          <AI><PioneerProvider>{children}</PioneerProvider></AI>
           <Footer />
         </ThemeProvider>
       </body>
